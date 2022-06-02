@@ -1,0 +1,74 @@
+.scroll {
+    height:400px;overflow:auto;
+    padding: 15px;
+}
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+::-webkit-scrollbar-track {
+    border: 1px solid yellowgreen;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+    background: yellowgreen;
+    border-radius: 10px;
+}
+    ::-webkit-scrollbar-thumb:hover { background: #88ba1c;
+
+}
+.help-block-error {
+	display: block;
+	margin-top: 5px;
+	margin-bottom: 10px;
+	color: #f03c3c!important;
+}
+.input-icon > i {
+	color: rgb(146, 103, 103)!important;
+	position: absolute;
+	margin: 11px 2px 4px 10px;
+	z-index: 3;
+	width: 16px;
+	font-size: 16px;
+	text-align: center;
+	left: 0;
+}
+.has-success .input-icon > i {
+	color: #36c6d3!important;
+}
+
+.h4-cart{
+	margin-bottom: 16px;
+	font-size: 15px!important;		
+	font-weight: 300;
+	line-height: 1.3;
+}
+
+.img-zoom-container {
+	position: relative;
+  }
+  
+  .img-zoom-lens {
+	position: absolute;
+	border: 1px solid #d4d4d4;
+	/*set the size of the lens:*/
+	width: 40px;
+	height: 40px;
+  }
+  
+  .img-zoom-result {
+	border: 1px solid #d4d4d4;
+	/*set the size of the result div:*/
+	width: 300px;
+	height: 300px;
+  }
+
+  .ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.validation{
+	color: #f03c3c;
+}
+

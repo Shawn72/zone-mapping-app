@@ -1,0 +1,8 @@
+.maps-card{
+/* max-width: 30em!important;
+height: 20em!important; */
+width:600px!important;
+height: 600px!important;
+border-top-left-radius: calc(.25rem - 1px)!important;
+border-top-right-radius: calc(.25rem - 1px)!important;   
+}
