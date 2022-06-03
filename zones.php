@@ -13,11 +13,7 @@
           <img alt="" src="admin/assets/loaders/spinner.gif" />
       </div>
   </div>  
-    <!-- Google Tag Manager (noscript)-->
-    <noscript>
-      <iframe src="http://www.googletagmanager.com/ns.html?id=GTM-T4DJFPZ" height="0" width="0" style="display: none; visibility: hidden;"></iframe>
-    </noscript>
-  
+
     <!--Header Start-->
     <!-- Header End-->
 
@@ -44,22 +40,24 @@
       <div class="row">
 
         <div class="col-md-8 col-sm-10">
-          <div class="card mb-30">   
-          <div id="deliv_map_pred"  class="maps-card"></div>
+          <div class="card mb-30">
+          <div id="deliv_map"  class="maps-card"></div>
             <div class="card-body">
 
                 <!-- search map here -->
                 <h3>Search Locations Here</h3>              
-                <form class="address_form" style="padding:10px 0px 30px 0px; background:none;">                                
-                
+                <form class="address_form" style="padding:10px 0px 30px 0px; background:none;">
                   <div class="form-group">
-                    <strong> Location Predictions</strong><br/>
-                    <input  class="form-group" type="text" size="60" id="prd-address" name="prd-address" placeholder="type address" value="" class="address" /><br/>
+                    <strong> Search Location</strong><br/>
+                    <input  class="form-group" type="text" size="60" id="address" name="address" placeholder="type location" value="" class="address" /><br/>
                   </div>
-
-                  <div id="map-feedback">
-                      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                  </div>
+                 
+                  <div class="form-group">
+                      <input type="submit" class="btn btn-primary btnSearch" value="Search" /> (options: Morning Side Ngong Road, Muringa Heights )
+                      &nbsp;
+                      <!-- <input type="button" class="btn btn-primary btnLoadXml" value="Load Xml" /> -->
+                  </div>   
+                  <br/>                 
 
                </form>
             </div>
@@ -75,7 +73,7 @@
 <a class="scroll-to-top-btn" href="#"><i class="icon-chevron-up"></i></a>
 
 <!--sTART INJECT:  JavaScript (jQuery) libraries, plugins and custom scripts-->
-<?php require_once('header_scripts_maps.php')?>
+<?php require_once('header_scripts_zones.php')?>
 <!--eND INJECT:  JavaScript (jQuery) libraries, plugins and custom scripts--> 
 
   </body>

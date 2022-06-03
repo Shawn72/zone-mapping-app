@@ -22,7 +22,6 @@
 <!-- BEGIN MY CUSTOMIZED LAYOUT STYLES -->
 <link href="admin/assets/customassets/css/customstyles.css" rel="stylesheet" type="text/css" />
 <link href="admin/assets/customassets/css/overlay.css" rel="stylesheet" type="text/css" />
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 
 
 </head>

@@ -13,25 +13,24 @@ var googleMaps = function () {
 
      // alert("still loading things from here: initialize")
     
-     //load stored kml map files
-      var polygonZoneA =  loadFileToElement("~/xml_zones/zone_a.xml");    
-      var polygonZoneB =  loadFileToElement("http://localhost:9090/zoning/zone_b.xml"); 
+     //load stored kml map files      
+      var polygonZoneA =  loadFileToElement("xml_zones/golf_course.xml");    
+      var polygonZoneB =  loadFileToElement("xml_zones/kilimani.xml");
+      var polygonZoneC =  loadFileToElement("xml_zones/upperhill.xml"); 
     
 
       geocoder = new google.maps.Geocoder();
       infowindow = new google.maps.InfoWindow({
-          size: new google.maps.Size(150, 50)
-      });
-
-      // var myLatLng = new google.maps.LatLng(-1.299182789116766, 36.78356022890926);
-      // var maptype = google.maps.MapTypeId.ROADMAP;
-    
-      // If there are any parameters at eh end of the URL, they will be in  location.search
+      size: new google.maps.Size(150, 50)      
+      });    
+     
+      // If there are any parameters at the end of the URL, they will be in  location.search
       // looking something like  "?marker=3"
      
       map = new google.maps.Map(document.getElementById("deliv_map"), {
         center: {
-          lat: -1.299182789116766, lng: 36.78356022890926
+          //Uncle Nene point of reference location
+          lat: -1.311404060879111, lng: 36.8005596938941
         },
         zoom: 5,
       });
@@ -52,6 +51,12 @@ var googleMaps = function () {
       //parse the covered zones here
       geoXml.parseKmlString(polygonZoneA);
       geoXml.parseKmlString(polygonZoneB);
+      geoXml.parseKmlString(polygonZoneC);
+
+      //add listener
+       google.maps.event.addListenerOnce(map, 'tilesloaded', function(evt) { 
+        bounds = map.getBounds();
+      });
 
       google.maps.event.addListenerOnce(map, "idle", function() {
         for (var j = 0; j < geoXml.docs.length; j++) {
@@ -83,7 +88,7 @@ var googleMaps = function () {
           infowindow.open(map, marker);
         });
         google.maps.event.trigger(marker, "click");
-      }
+      }  
 
       //search the submitted address
       function showAddress(address) {        
@@ -133,15 +138,18 @@ var googleMaps = function () {
               contentString = detectAddressZone(address, point, contentString); 
 
               //point of ref
-              var myLatLng = new google.maps.LatLng(-1.299182789116766, 36.78356022890926);
+              var myLatLng = new google.maps.LatLng(-1.311404060879111, 36.8005596938941); 
               var distanceinmeters = getTheDistance(myLatLng, point) 
               
               switch(contentString){
-                case "zone A":
-                  alert("Address found in zone A, Distance:"+(distanceinmeters/1000).toFixed(3)+" KMs away")
+                case "golf_course":
+                  alert("Address found in Golf Course zone, Distance:"+(distanceinmeters/1000).toFixed(3)+" KMs away")
                   break;
-                case "zone B":
-                  alert("Address found in zone B, Distance: "+(distanceinmeters/1000).toFixed(3)+" KMs away" )
+                case "kilimani":
+                  alert("Address found in Kilimani zone, Distance: "+(distanceinmeters/1000).toFixed(3)+" KMs away" )
+                break;
+                case "upperhill":
+                  alert("Address found in Upperhill zone, Distance: "+(distanceinmeters/1000).toFixed(3)+" KMs away" )
                 break;
                 default: //returned null
                   alert("Address outside any of the demarcations! Distance: "+(distanceinmeters/1000).toFixed(3)+" KMs away")
@@ -209,58 +217,28 @@ var googleMaps = function () {
           // alert("Search Address: "+ addressVal)
           // showAddress(addressVal);
            processAddress(addressVal)
-
-         // console.log("location status: "+pp)
-         // alert("address: "+pp);
-        //  var zDetector =  detectAddressZone(addressVal);
-        //  var splitter = zDetector.split('*');
-        //  if(splitter[1] =="insidezone"){
-        //    alert("Address is in the specified Zones")
-        //  }
-        // else if(splitter[1] =="outsidezone"){
-        //   alert("Address is oustide coverage area, try another")
-        // }
-
       })
-
-      //load xml
-      $(".address_form .btnLoadXml").click(function (e) {
-        e.preventDefault()
-       var xmlfile = loadFileToElement("http://localhost:9090/zoning/zone_a.xml");       
-       convertXmlToJson(xmlfile)
-      })
-
-
-      //load xml file from drive
+           
+        //load xml file from drive
       function loadFileToElement(filename)
       {
-          var xmlHTTP = new XMLHttpRequest();
-          try
-          {
-          xmlHTTP.open("GET", filename, false);
-          xmlHTTP.send(null);
-          }
-          catch (e) {
-              window.alert("Unable to load the requested the file!");
-              return;
-          }
-          return xmlHTTP.responseText;
-         // alert("xml: "+xmlHTTP.responseText)
-         // document.getElementById(elementId).innerHTML=xmlHTTP.responseText;
+            var xmlHTTP = new XMLHttpRequest();
+            try
+            {
+            xmlHTTP.open("GET", filename, false);
+            xmlHTTP.send(null);
+            }
+            catch (e) {
+                window.alert("Unable to load the requested the file!");
+                return;
+            }
+            return xmlHTTP.responseText;
+            // alert("xml: "+xmlHTTP.responseText)
+            // document.getElementById(elementId).innerHTML=xmlHTTP.responseText;
       }
-
-      //convert xml to json if need be
-      function convertXmlToJson(filename){
-        var x2js = new X2JS();
-        var jsonStr = JSON.stringify(x2js.xml_str2json(filename) )
-        alert(jsonStr)
-      }
-
-
   
       //end initialize function
   };
-
 
   //call functions here
   return {

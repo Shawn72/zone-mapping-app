@@ -10,5 +10,5 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAw8TDrEqckCK7zDnaVjaOvZbDKNyMefyc&libraries=places"></script>
 <script src="https://cdn.jsdelivr.net/gh/geocodezip/geoxml3@master/polys/geoxml3.js"></script>
 <script src="admin/assets/xmltojson/xml2json.min.js" ></script>
-<script src="js/autocomplete.js"></script>
+<script src="js/zones.js"></script>
 <!-- END: Maps -->
